@@ -1,0 +1,17 @@
+import { chromium } from "playwright";
+import fs from "fs";
+const BASE = "https://asian-leaders.jytech.us";
+const b = await chromium.launch();
+const p = await b.newPage({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 3 });
+const out = {};
+const y = (sel) => p.evaluate((s) => { const e = document.querySelector(s); return e ? Math.round(e.getBoundingClientRect().top + scrollY) : null; }, sel);
+await p.goto(BASE + "/", { waitUntil: "networkidle" });
+out.home = { hero: await y("h1"), cards: await y("article"), criteria: await y("main > section:last-of-type") };
+out.home.photoCards = await p.evaluate(() => [...document.querySelectorAll("article")].findIndex(a => !a.querySelector("img")));
+await p.goto(BASE + "/updates", { waitUntil: "networkidle" });
+out.updates = { list: await y("ol") };
+await p.goto(BASE + "/recommend", { waitUntil: "networkidle" });
+out.recommend = { form: await y("form"), criteria: await y("ol") };
+fs.writeFileSync("assets/offsets.json", JSON.stringify(out, null, 1));
+console.log(out);
+await b.close();

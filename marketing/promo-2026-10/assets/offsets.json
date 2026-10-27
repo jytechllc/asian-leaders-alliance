@@ -1,0 +1,15 @@
+{
+ "home": {
+  "hero": 173,
+  "cards": 1024,
+  "criteria": 12283,
+  "photoCards": 5
+ },
+ "updates": {
+  "list": 404
+ },
+ "recommend": {
+  "form": 539,
+  "criteria": 336
+ }
+}

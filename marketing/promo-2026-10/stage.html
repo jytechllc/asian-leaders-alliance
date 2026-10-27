@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --paper: #f6f3ec; --ink: #1d1b17; --muted: #6b665c; --accent: #a8262c; --dark: #13120f; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--paper); }
+  body { font-family: "PingFang SC", "Hiragino Sans GB", sans-serif; color: var(--ink); }
+  .serif { font-family: "Songti SC", "STSong", serif; font-weight: 900; }
+  .scene { position: absolute; inset: 0; opacity: 0; }
+  .dark { background: var(--dark); color: #f3eee4; }
+
+  /* 顶部品牌条 */
+  #brand { position: absolute; top: 96px; left: 84px; display: flex; align-items: center; gap: 22px; z-index: 5; }
+  #brand .seal { width: 76px; height: 76px; border-radius: 16px; background: var(--accent); color: #fff;
+    display: grid; place-items: center; font-size: 46px; }
+  #brand .name { font-size: 42px; letter-spacing: 3px; }
+
+  /* 手机框 */
+  .phone { position: absolute; left: 50%; width: 700px; height: 1250px; margin-left: -350px; border-radius: 64px;
+    background: #111; padding: 18px; box-shadow: 0 40px 90px rgba(40, 20, 10, .28); }
+  .phone .screen { width: 100%; height: 100%; border-radius: 48px; overflow: hidden; background: #f6f3ec; position: relative; }
+  .phone img { position: absolute; left: 0; top: 0; width: 100%; will-change: transform; }
+
+  /* 字幕 */
+  #cap { position: absolute; left: 70px; right: 150px; top: 1520px; z-index: 10; text-align: center;
+    font-size: 50px; line-height: 1.45; font-weight: 600; color: #fff; opacity: 0; }
+  #cap span { background: rgba(20, 18, 15, .82); padding: 10px 22px; border-radius: 14px;
+    -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+
+  /* hook */
+  #hook .l1, #hook .l2 { position: absolute; left: 84px; right: 84px; font-size: 118px; line-height: 1.2; }
+  #hook .l1 { top: 600px; }
+  #hook .l2 { top: 760px; color: #ff6b6f; font-size: 104px; white-space: nowrap; }
+  #hook .ceiling { position: absolute; top: 520px; left: 84px; height: 10px; background: #ff6b6f; transform-origin: left; }
+
+  /* 标题卡 */
+  .kicker { font-size: 40px; letter-spacing: 8px; color: var(--accent); font-weight: 600; }
+  .big { font-size: 112px; line-height: 1.18; }
+  .chips { display: flex; flex-wrap: wrap; gap: 20px; }
+  .chip { font-size: 44px; padding: 14px 34px; border-radius: 999px; border: 3px solid var(--accent); color: var(--accent); font-weight: 600; }
+
+  #alliance .seal-lg { width: 200px; height: 200px; border-radius: 40px; background: var(--accent); color: #fff;
+    display: grid; place-items: center; font-size: 128px; margin-bottom: 60px; }
+
+  .crit { display: flex; gap: 34px; align-items: center; background: #fffdf8; border: 3px solid #e2dccf; border-radius: 30px;
+    padding: 40px 44px; margin-bottom: 30px; }
+  .crit b { font-size: 80px; color: var(--accent); width: 70px; text-align: center; }
+  .crit span { font-size: 52px; font-weight: 600; line-height: 1.35; }
+
+  #cta .url { white-space: nowrap; font-size: 48px; font-weight: 700; color: var(--accent); letter-spacing: .5px; }
+  #cta .btn { display: inline-block; font-size: 54px; padding: 26px 56px; border-radius: 22px; background: var(--accent); color: #fff; font-weight: 700; }
+</style>
+</head>
+<body>
+  <div id="brand"><span class="seal serif">华</span><span class="name serif">世界华人名人录</span></div>
+
+  <section id="hook" class="scene dark">
+    <div class="ceiling"></div>
+    <div class="l1 serif">华人在海外</div>
+    <div class="l2 serif">真的有天花板吗？</div>
+  </section>
+
+  <section id="faces" class="scene">
+    <div class="phone" style="top:260px"><div class="screen"><img src="assets/home.png"></div></div>
+  </section>
+
+  <section id="intro" class="scene">
+    <div style="position:absolute;top:240px;left:84px;right:84px">
+      <div class="kicker">WORLD CHINESE LEADERS</div>
+      <div class="big serif" style="margin-top:20px">世界华人名人录</div>
+      <div class="chips" style="margin-top:44px"></div>
+    </div>
+    <div class="phone" style="top:760px;height:1100px"><div class="screen"><img src="assets/home.png"></div></div>
+  </section>
+
+  <section id="wiki" class="scene">
+    <div style="position:absolute;top:240px;left:84px;right:84px">
+      <div class="kicker">WIKIPEDIA SYNC</div>
+      <div class="serif" style="font-size:88px;line-height:1.2;margin-top:20px">与维基百科<br>每日同步</div>
+    </div>
+    <div class="phone" style="top:700px;height:1150px"><div class="screen"><img src="assets/updates.png"></div></div>
+  </section>
+
+  <section id="alliance" class="scene dark">
+    <div style="position:absolute;top:560px;left:84px;right:84px">
+      <div class="seal-lg serif">华</div>
+      <div class="serif" style="font-size:66px;color:#cfc7b8">由亚裔领袖联盟维护</div>
+      <div class="big serif" style="margin-top:28px">现已开放推荐</div>
+    </div>
+  </section>
+
+  <section id="criteria" class="scene">
+    <div style="position:absolute;top:300px;left:84px;right:84px">
+      <div class="kicker">谁可以被推荐</div>
+      <div class="serif" style="font-size:84px;margin:24px 0 56px">入选标准</div>
+      <div class="crit"><b class="serif">1</b><span>影响力 1 万以上，<br>或见诸报道、有出版作品</span></div>
+      <div class="crit"><b class="serif">2</b><span>在海外生活 3 年以上</span></div>
+      <div class="crit"><b class="serif">3</b><span>在世或已故均可</span></div>
+    </div>
+  </section>
+
+  <section id="cta" class="scene">
+    <div class="phone" style="top:230px;height:900px;width:640px;margin-left:-320px"><div class="screen"><img src="assets/recommend.png"></div></div>
+    <div style="position:absolute;top:1190px;left:84px;right:84px;text-align:center">
+      <div class="serif" style="font-size:76px">推荐一位你心中的华人领袖</div>
+      <div class="url" style="margin-top:36px">asian-leaders.jytech.us/recommend</div>
+    </div>
+  </section>
+
+  <div id="cap"><span></span></div>
+
+<script>
+  // 时间轴由 render.mjs 注入：TIMELINE = [{id, start, end, vo}]
+  const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+  const ease = (x) => 1 - Math.pow(1 - clamp(x), 3);
+  const prog = (t, a, d) => ease((t - a) / d);
+  const $ = (s, r = document) => r.querySelector(s);
+  const CHIPS = ["科技", "商业", "学术", "体育", "文化"];
+  const S = 700 / 1170; // 截图像素 → 手机框像素（宽 700 时）
+
+  window.setup = (timeline, offsets) => {
+    window.TL = timeline; window.OFF = offsets;
+    $("#intro .chips").innerHTML = CHIPS.map((c) => `<span class="chip">${c}</span>`).join("");
+  };
+
+  function fade(el, t, s) {
+    // 场景切换：0.35s 交叉淡入淡出 + 轻微上移
+    const a = prog(t, s.start - 0.15, 0.35), b = 1 - prog(t, s.end - 0.2, 0.35);
+    const v = Math.min(a, b);
+    el.style.opacity = v;
+    el.style.transform = `translateY(${(1 - a) * 40}px)`;
+    return v;
+  }
+
+  window.render = (t) => {
+    const tl = window.TL, off = window.OFF;
+    const cur = tl.find((s) => t >= s.start - 0.15 && t < s.end + 0.15) || tl[tl.length - 1];
+    for (const s of tl) {
+      const el = document.getElementById(s.id);
+      const v = fade(el, t, s);
+      if (v <= 0) continue;
+      const lt = t - s.start, d = s.end - s.start;
+
+      if (s.id === "hook") {
+        $("#hook .ceiling").style.width = `${prog(lt, 0, 0.8) * 912}px`;
+        $("#hook .l1").style.opacity = prog(lt, 0.1, 0.5);
+        $("#hook .l2").style.opacity = prog(lt, 0.9, 0.5);
+        $("#hook .l2").style.transform = `translateY(${(1 - prog(lt, 0.9, 0.5)) * 30}px)`;
+      }
+      if (s.id === "faces") {
+        // 从人物卡片开始快速滑过有照片的卡片
+        const y0 = off.home.cards * 3 - 60, y1 = y0 + 3400;
+        $("#faces img").style.transform = `translateY(${-(y0 + (y1 - y0) * prog(lt, 0, d)) * S}px)`;
+      }
+      if (s.id === "intro") {
+        const sc = 664 / 1170;
+        const y0 = off.home.hero * 3 - 90, y1 = off.home.cards * 3 + 300;
+        $("#intro img").style.transform = `translateY(${-(y0 + (y1 - y0) * prog(lt, 1.2, d - 1.6)) * sc}px)`;
+        document.querySelectorAll("#intro .chip").forEach((c, i) => {
+          const p = prog(lt, 2.0 + i * 0.55, 0.35);
+          c.style.opacity = p; c.style.transform = `scale(${0.8 + 0.2 * p})`;
+        });
+      }
+      if (s.id === "wiki") {
+        const sc = 664 / 1170;
+        const y0 = 0, y1 = off.updates.list * 3 + 900;
+        $("#wiki img").style.transform = `translateY(${-(y0 + (y1 - y0) * prog(lt, 0.4, d - 0.6)) * sc}px)`;
+      }
+      if (s.id === "alliance") {
+        const p = prog(lt, 0, 0.6);
+        $("#alliance .seal-lg").style.transform = `scale(${0.7 + 0.3 * p})`;
+        $("#alliance .big").style.opacity = prog(lt, 1.6, 0.5);
+      }
+      if (s.id === "criteria") {
+        document.querySelectorAll("#criteria .crit").forEach((c, i) => {
+          const p = prog(lt, 0.3 + i * 1.5, 0.45);
+          c.style.opacity = p; c.style.transform = `translateX(${(1 - p) * 80}px)`;
+        });
+      }
+      if (s.id === "cta") {
+        const sc = 604 / 1170;
+        const y = (off.recommend.form * 3 - 150) * prog(lt, 0.3, 1.6);
+        $("#cta img").style.transform = `translateY(${-y * sc}px)`;
+        const u = $("#cta .url"); const p = prog(lt, 1.0, 0.5);
+        u.style.opacity = p; u.style.transform = `scale(${0.9 + 0.1 * p})`;
+      }
+    }
+    // 字幕：hook 与标题卡已有大字，只给其余场景配字幕
+    const cap = $("#cap");
+    const showCap = cur && !["hook", "alliance", "criteria", "cta"].includes(cur.id) && t >= cur.start && t < cur.voEnd;
+    cap.style.opacity = showCap ? 1 : 0;
+    if (showCap) $("#cap span").textContent = cur.vo;
+    $("#brand").style.opacity = t < (tl[0].end - 0.1) ? 0 : 1;
+    $("#brand").style.color = ["alliance"].includes(cur.id) ? "#f3eee4" : "var(--ink)";
+  };
+</script>
+</body>
+</html>
