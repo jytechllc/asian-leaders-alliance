@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# 宣传片渲染产物
+/marketing/**/out/
+/marketing/**/frames/
+/marketing/**/node_modules

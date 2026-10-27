@@ -91,6 +91,7 @@ export const leaders: Leader[] = [
     link: { label: "votejeffwang.com", href: "https://www.votejeffwang.com/" },
     image: { src: "/people/jeff-wang.jpg", kind: "photo" },
   },
+  { region: "美国", name: "Jonathan 翁志坚", position: "广西同乡会副会长", note: "原越南商会会长" },
   { region: "加拿大", name: "汤山老王", position: "YouTuber" },
   { region: "日本", name: "小船", position: "创业导师" },
   { region: "澳大利亚", name: "小乌", position: "脑洞乌托邦" },
