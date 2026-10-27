@@ -36,7 +36,7 @@ export default async function Home() {
 
       <section className="mt-10 grid gap-3 sm:grid-cols-3">
         {[
-          "CEO 也是一种职业，需要相应的技能，胆魄和眼界尤其重要。",
+          "领导者也是一种职业，需要相应的能力，胆魄和眼界尤其重要。",
           "突破文化界限可以从兴趣出发，自然就能打成一片。",
           "办公室政治难以避免，要学会化险为夷，把握每一次机遇。",
         ].map((t, i) => (
