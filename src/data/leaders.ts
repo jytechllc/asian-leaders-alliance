@@ -1,5 +1,6 @@
 // 名录来源：dotku/overseas-chinese-kol-leaders（README.md / forbes-2022.md）
 // wiki 为英文维基百科条目标题；中文条目通过语言链接自动获取。
+// image 用于没有维基照片的人物，文件放在 public/people/；logo 会完整显示而不裁切。
 
 export type Region = "美国" | "加拿大" | "日本" | "澳大利亚" | "马来西亚";
 
@@ -10,6 +11,7 @@ export type Leader = {
   link?: { label: string; href: string };
   region: Region;
   wiki?: string;
+  image?: { src: string; kind: "photo" | "logo" };
 };
 
 export const REGIONS: Region[] = ["美国", "加拿大", "日本", "澳大利亚", "马来西亚"];
@@ -75,12 +77,19 @@ export const leaders: Leader[] = [
     position: "YouTuber",
     link: { label: "@ChinesewithJessie", href: "https://www.youtube.com/@ChinesewithJessie" },
   },
-  { region: "美国", name: "Athena Liu", position: "美中友好联盟执行主席" },
+  {
+    region: "美国",
+    name: "Athena Liu",
+    position: "美中友好联盟（SAPA）执行主席",
+    link: { label: "X @AthenaLiuGoodm1", href: "https://x.com/AthenaLiuGoodm1" },
+    image: { src: "/people/athena-liu-sapa.jpg", kind: "logo" },
+  },
   {
     region: "美国",
     name: "Jeff Wang",
     position: "Candidate, Union City Council District 3",
     link: { label: "votejeffwang.com", href: "https://www.votejeffwang.com/" },
+    image: { src: "/people/jeff-wang.jpg", kind: "photo" },
   },
   { region: "加拿大", name: "汤山老王", position: "YouTuber" },
   { region: "日本", name: "小船", position: "创业导师" },

@@ -5,10 +5,11 @@ import { getWikiInfo } from "@/lib/wiki";
 
 export default async function Home() {
   const wiki = await getWikiInfo(leaders.flatMap((l) => (l.wiki ? [l.wiki] : [])));
-  // 有维基资料的人物排在前面，其余保持原名录顺序
+  // 有维基资料的人物排在前面，其次是有照片的，其余保持原名录顺序
+  const rank = (i: { leader: (typeof leaders)[number]; wiki?: unknown }) => (i.wiki ? 2 : i.leader.image ? 1 : 0);
   const items = leaders
     .map((leader) => ({ leader, wiki: leader.wiki ? wiki[leader.wiki] : undefined }))
-    .sort((a, b) => Number(Boolean(b.wiki)) - Number(Boolean(a.wiki)));
+    .sort((a, b) => rank(b) - rank(a));
   const withWiki = items.filter((i) => i.wiki).length;
 
   return (
@@ -55,8 +56,8 @@ export default async function Home() {
           <h2 className="font-serif text-xl font-bold">入选标准</h2>
           <ol className="mt-3 list-decimal space-y-1 pl-5 text-sm leading-relaxed text-muted">
             <li>具有 1 万以上的影响力，或曾见诸新闻报道、有出版作品；</li>
-            <li>美国公民或绿卡持有者，或在美国生活 5 年以上；</li>
-            <li>本人仍然在世。</li>
+            <li>在海外生活 3 年以上；</li>
+            <li>在世或已故人物均可收录。</li>
           </ol>
         </div>
         <Link

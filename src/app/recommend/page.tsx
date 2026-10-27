@@ -14,8 +14,8 @@ export default function Recommend() {
         </p>
         <ol className="mt-6 list-decimal space-y-1 pl-5 text-sm leading-relaxed text-muted">
           <li>具有 1 万以上的影响力，或曾见诸新闻报道、有出版作品；</li>
-          <li>美国公民或绿卡持有者，或在美国生活 5 年以上；</li>
-          <li>本人仍然在世。</li>
+          <li>在海外生活 3 年以上；</li>
+          <li>在世或已故人物均可收录。</li>
         </ol>
         <p className="mt-6 text-sm text-muted">附上维基百科链接，审核会更快，入选后简介与照片也会随维基自动更新。</p>
       </section>

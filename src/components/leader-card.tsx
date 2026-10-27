@@ -7,11 +7,12 @@ export function formatDate(iso?: string) {
   return `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, "0")}-${String(d.getUTCDate()).padStart(2, "0")}`;
 }
 
-function Avatar({ name, src }: { name: string; src?: string }) {
+function Avatar({ name, src, logo }: { name: string; src?: string; logo?: boolean }) {
   if (src) {
+    const fit = logo ? "border border-line bg-white object-contain p-1" : "object-cover object-top";
     // 维基图片直接加载，不经过图片优化
     // eslint-disable-next-line @next/next/no-img-element
-    return <img src={src} alt={name} loading="lazy" className="size-16 shrink-0 rounded-lg object-cover object-top" />;
+    return <img src={src} alt={name} loading="lazy" className={`size-16 shrink-0 rounded-lg ${fit}`} />;
   }
   return (
     <span
@@ -29,7 +30,11 @@ export function LeaderCard({ leader, wiki }: { leader: Leader; wiki?: WikiInfo }
   return (
     <article className="flex h-full flex-col rounded-xl border border-line bg-card p-4">
       <div className="flex gap-4">
-        <Avatar name={leader.name} src={wiki?.thumbnail} />
+        <Avatar
+          name={leader.name}
+          src={wiki?.thumbnail ?? leader.image?.src}
+          logo={!wiki?.thumbnail && leader.image?.kind === "logo"}
+        />
         <div className="min-w-0">
           <h3 className="font-serif text-lg font-bold leading-snug">
             {leader.name}
