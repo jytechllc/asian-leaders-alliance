@@ -75,6 +75,7 @@ export const leaders: Leader[] = [
     position: "YouTuber",
     link: { label: "@ChinesewithJessie", href: "https://www.youtube.com/@ChinesewithJessie" },
   },
+  { region: "美国", name: "Athena Liu", position: "美中友好联盟执行主席" },
   { region: "加拿大", name: "汤山老王", position: "YouTuber" },
   { region: "日本", name: "小船", position: "创业导师" },
   { region: "澳大利亚", name: "小乌", position: "脑洞乌托邦" },
