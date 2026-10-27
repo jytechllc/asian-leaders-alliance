@@ -18,7 +18,7 @@ export default async function Home() {
         <p className="text-sm font-medium tracking-widest text-accent">由亚裔领袖联盟维护</p>
         <h1 className="mt-2 font-serif text-4xl font-bold leading-tight sm:text-5xl">世界华人名人录</h1>
         <p className="mt-5 leading-relaxed text-muted">
-          很多人说华人在海外存在玻璃天花板（Bamboo Ceiling）。到底如何突破这层天花板？我们整理了在科技、商业、学术、体育与文化领域走在前面的世界各地华人，从他们的经历里找答案。
+          天花板不是终点。从硅谷到好莱坞，从奥运赛场到诺贝尔领奖台，世界各地的华人领导者正在用成就改写规则。世界华人名人录记录他们走过的路，为下一代华人领导者树立标杆。
         </p>
         <dl className="mt-8 flex flex-wrap gap-x-10 gap-y-4">
           {[
