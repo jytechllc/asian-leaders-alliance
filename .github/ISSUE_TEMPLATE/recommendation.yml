@@ -1,0 +1,45 @@
+name: 推荐名人
+description: 推荐一位值得收录进世界华人名人录的华人
+title: "推荐名人："
+labels: ["recommendation"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        认识值得被更多人看到的华人？告诉我们他们是谁、为什么值得推荐。我们会核实公开资料，符合入选标准的人物将加入[世界华人名人录](https://asian-leaders.jytech.us)。
+
+        **入选标准**
+        1. 具有 1 万以上的影响力，或曾见诸新闻报道、有出版作品；
+        2. 在海外生活 3 年以上；
+        3. 在世或已故人物均可收录。
+
+        附上维基百科链接，审核会更快，入选后简介与照片也会随维基自动更新。本页内容公开可见，请不要填写被推荐人或你自己的联系方式。
+  - type: input
+    id: name
+    attributes:
+      label: 姓名
+      placeholder: 中文名 / English name
+    validations:
+      required: true
+  - type: input
+    id: region
+    attributes:
+      label: 国家/地区
+      placeholder: 例如：美国
+  - type: input
+    id: position
+    attributes:
+      label: 职位/领域
+      placeholder: 例如：某公司创始人、作家、科学家
+  - type: input
+    id: wiki
+    attributes:
+      label: 维基百科链接
+      placeholder: https://zh.wikipedia.org/wiki/...
+  - type: textarea
+    id: reason
+    attributes:
+      label: 推荐理由
+      description: 主要成就、影响力，可附新闻报道或作品链接
+    validations:
+      required: true
