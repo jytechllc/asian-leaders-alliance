@@ -14,10 +14,10 @@ export default async function Home() {
   return (
     <>
       <section className="max-w-3xl">
-        <p className="text-sm font-medium tracking-widest text-accent">ASIAN LEADERS ALLIANCE</p>
-        <h1 className="mt-2 font-serif text-4xl font-bold leading-tight sm:text-5xl">亚裔领袖名人录</h1>
+        <p className="text-sm font-medium tracking-widest text-accent">由亚裔领袖联盟维护</p>
+        <h1 className="mt-2 font-serif text-4xl font-bold leading-tight sm:text-5xl">世界华人名人录</h1>
         <p className="mt-5 leading-relaxed text-muted">
-          很多人说华人在海外存在玻璃天花板（Bamboo Ceiling）。到底如何突破这层天花板？我们整理了在科技、商业、学术、体育与文化领域走在前面的海外华人与亚裔，从他们的经历里找答案。
+          很多人说华人在海外存在玻璃天花板（Bamboo Ceiling）。到底如何突破这层天花板？我们整理了在科技、商业、学术、体育与文化领域走在前面的世界各地华人，从他们的经历里找答案。
         </p>
         <dl className="mt-8 flex flex-wrap gap-x-10 gap-y-4">
           {[

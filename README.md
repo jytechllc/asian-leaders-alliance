@@ -1,6 +1,8 @@
-# 亚裔领袖联盟 · 名人录
+# 世界华人名人录
 
-海外华人与亚裔领袖名录站，Next.js 16（Cache Components）+ Tailwind 4。
+由亚裔领袖联盟维护。
+
+世界华人名人录站，Next.js 16（Cache Components）+ Tailwind 4。
 
 - `/` 名人录：地区筛选与搜索；有维基条目的人物显示中文简介、照片
 - `/forbes-2022` 福布斯 2022 海外华人富豪前 10
