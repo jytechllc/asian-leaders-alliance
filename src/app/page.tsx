@@ -1,69 +1,71 @@
-import Image from "next/image";
+import Link from "next/link";
+import { Directory } from "@/components/directory";
+import { REGIONS, leaders } from "@/data/leaders";
+import { getWikiInfo } from "@/lib/wiki";
 
-export default function Home() {
+export default async function Home() {
+  const wiki = await getWikiInfo(leaders.flatMap((l) => (l.wiki ? [l.wiki] : [])));
+  // 有维基资料的人物排在前面，其余保持原名录顺序
+  const items = leaders
+    .map((leader) => ({ leader, wiki: leader.wiki ? wiki[leader.wiki] : undefined }))
+    .sort((a, b) => Number(Boolean(b.wiki)) - Number(Boolean(a.wiki)));
+  const withWiki = items.filter((i) => i.wiki).length;
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      <section className="max-w-3xl">
+        <p className="text-sm font-medium tracking-widest text-accent">ASIAN LEADERS ALLIANCE</p>
+        <h1 className="mt-2 font-serif text-4xl font-bold leading-tight sm:text-5xl">亚裔领袖名人录</h1>
+        <p className="mt-5 leading-relaxed text-muted">
+          很多人说华人在海外存在玻璃天花板（Bamboo Ceiling）。到底如何突破这层天花板？我们整理了在科技、商业、学术、体育与文化领域走在前面的海外华人与亚裔，从他们的经历里找答案。
+        </p>
+        <dl className="mt-8 flex flex-wrap gap-x-10 gap-y-4">
+          {[
+            { k: "收录人物", v: leaders.length },
+            { k: "维基百科同步", v: withWiki },
+            { k: "国家与地区", v: REGIONS.length },
+          ].map((s) => (
+            <div key={s.k}>
+              <dd className="font-serif text-3xl font-bold tabular-nums">{s.v}</dd>
+              <dt className="text-sm text-muted">{s.k}</dt>
+            </div>
+          ))}
+        </dl>
+      </section>
+
+      <section className="mt-10 grid gap-3 sm:grid-cols-3">
+        {[
+          "CEO 也是一种职业，需要相应的技能，胆魄和眼界尤其重要。",
+          "突破文化界限可以从兴趣出发，自然就能打成一片。",
+          "办公室政治难以避免，要学会化险为夷，把握每一次机遇。",
+        ].map((t, i) => (
+          <div key={i} className="rounded-xl border border-line bg-card p-4">
+            <span className="font-serif text-2xl font-bold text-accent">{i + 1}</span>
+            <p className="mt-1 text-sm leading-relaxed">{t}</p>
+          </div>
+        ))}
+      </section>
+
+      <div className="mt-14">
+        <Directory items={items} regions={REGIONS} />
+      </div>
+
+      <section className="mt-16 grid gap-6 rounded-xl border border-line bg-card p-6 sm:grid-cols-[1fr_auto] sm:items-center">
+        <div>
+          <h2 className="font-serif text-xl font-bold">入选标准</h2>
+          <ol className="mt-3 list-decimal space-y-1 pl-5 text-sm leading-relaxed text-muted">
+            <li>具有 1 万以上的影响力，或曾见诸新闻报道、有出版作品；</li>
+            <li>美国公民或绿卡持有者，或在美国生活 5 年以上；</li>
+            <li>本人仍然在世。</li>
+          </ol>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+        <Link
+          href="/recommend"
+          className="inline-flex justify-center rounded-lg bg-accent px-5 py-2.5 text-sm font-medium text-white hover:opacity-90"
+        >
+          推荐一位名人
+        </Link>
+      </section>
+    </>
   );
 }

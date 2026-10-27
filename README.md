@@ -1,36 +1,27 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 亚裔领袖联盟 · 名人录
 
-## Getting Started
+海外华人与亚裔领袖名录站，Next.js 16（Cache Components）+ Tailwind 4。
 
-First, run the development server:
+- `/` 名人录：地区筛选与搜索；有维基条目的人物显示中文简介、照片
+- `/forbes-2022` 福布斯 2022 海外华人富豪前 10
+- `/updates` 维基动态：按条目最近编辑时间排序，用于跟踪人物变化
+- `/recommend` 推荐名人：提交后在本仓库生成 `recommendation` 标签的 Issue
+
+## 数据
+
+- 名单在 `src/data/leaders.ts`（来源 dotku/overseas-chinese-kol-leaders）。加人时填 `wiki` 为英文维基条目标题，中文条目自动通过语言链接获取。
+- 维基数据由 `src/lib/wiki.ts` 批量拉取（每批 20 条），`cacheLife("days")` 每日刷新。
+
+## 环境变量
+
+| 变量 | 说明 |
+| --- | --- |
+| `GITHUB_TOKEN` | 推荐表单创建 Issue 用，需对本仓库有 Issues 写权限（fine-grained token）。未设置时表单返回「推荐通道暂未开通」 |
+| `GITHUB_REPO` | 可选，默认 `jytechllc/asian-leaders-alliance` |
+
+## 开发
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
