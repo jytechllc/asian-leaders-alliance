@@ -2,7 +2,7 @@
 // wiki 为英文维基百科条目标题；中文条目通过语言链接自动获取。
 // image 用于没有维基照片的人物，文件放在 public/people/；logo 会完整显示而不裁切。
 
-export type Region = "美国" | "加拿大" | "日本" | "澳大利亚" | "马来西亚";
+export type Region = "美国" | "加拿大" | "日本" | "澳大利亚" | "马来西亚" | "中国";
 
 export type Leader = {
   name: string;
@@ -14,7 +14,7 @@ export type Leader = {
   image?: { src: string; kind: "photo" | "logo" };
 };
 
-export const REGIONS: Region[] = ["美国", "加拿大", "日本", "澳大利亚", "马来西亚"];
+export const REGIONS: Region[] = ["美国", "加拿大", "日本", "澳大利亚", "马来西亚", "中国"];
 
 export const leaders: Leader[] = [
   { region: "美国", name: "Big Joe", position: "谷歌资深产品经理", note: "帮助华人职场发展与个人发展" },
@@ -98,6 +98,12 @@ export const leaders: Leader[] = [
   { region: "澳大利亚", name: "小乌", position: "脑洞乌托邦" },
   { region: "澳大利亚", name: "Henry", position: "澳洲 Henry" },
   { region: "澳大利亚", name: "Rony Naviando", position: "Robot PhD" },
+  {
+    region: "中国",
+    name: "叶哥",
+    position: "陌陌头部主播",
+    note: "早年在深圳华强北从事手机销售；陌陌 2019 年度「荣耀之王」",
+  },
   { region: "马来西亚", name: "Nomad", position: "FIRE", note: "从英国移居马来西亚，刚刚获得财富自由的博主" },
 ];
 
