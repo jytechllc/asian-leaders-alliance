@@ -38,7 +38,7 @@ export default async function Home() {
         {[
           "领导者也是一种职业，需要相应的能力，胆魄和眼界尤其重要。",
           "突破文化界限可以从兴趣出发，自然就能打成一片。",
-          "办公室政治难以避免，要学会化险为夷，把握每一次机遇。",
+          "天灾人祸难以避免，要学会化险为夷，把握每一次机遇。",
         ].map((t, i) => (
           <div key={i} className="rounded-xl border border-line bg-card p-4">
             <span className="font-serif text-2xl font-bold text-accent">{i + 1}</span>
