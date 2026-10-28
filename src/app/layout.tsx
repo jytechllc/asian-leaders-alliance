@@ -9,6 +9,9 @@ export const metadata: Metadata = {
     template: "%s · 世界华人名人录",
   },
   description: "世界华人名人录：收录世界各地华人在科技、商业、学术、体育与文化领域的代表人物，资料随维基百科同步更新。由亚裔领袖联盟维护。",
+  metadataBase: new URL("https://asian-leaders.jytech.us"),
+  openGraph: { siteName: "世界华人名人录", locale: "zh_CN", type: "website" },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

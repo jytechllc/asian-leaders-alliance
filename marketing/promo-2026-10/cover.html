@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --paper: #f6f3ec; --accent: #a8262c; --dark: #13120f; --red: #ff6b6f; }
+  body { font-family: "PingFang SC", "Hiragino Sans GB", sans-serif; background: var(--dark); color: #f3eee4; overflow: hidden; }
+  .serif { font-family: "Songti SC", "STSong", serif; font-weight: 900; }
+  .brand { display: flex; align-items: center; gap: 22px; }
+  .seal { border-radius: 16px; background: var(--accent); color: #fff; display: grid; place-items: center; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .face { position: relative; overflow: hidden; border-radius: 22px; background: #2a2723; }
+  .face img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; display: block; }
+  .face span { position: absolute; left: 0; right: 0; bottom: 0; padding: 40px 0 14px; text-align: center; font-weight: 700;
+    background: linear-gradient(transparent, rgba(10, 9, 8, .85)); color: #fff; }
+  .ceiling { height: 10px; background: var(--red); }
+
+  /* 竖版 1080×1920（Shorts 封面） */
+  body.v { width: 1080px; height: 1920px; }
+  .v .brand { position: absolute; top: 96px; left: 84px; }
+  .v .seal { width: 76px; height: 76px; font-size: 46px; }
+  .v .brand .name { font-size: 42px; letter-spacing: 3px; }
+  .v .ceiling { position: absolute; top: 300px; left: 84px; width: 912px; }
+  .v .l1 { position: absolute; top: 350px; left: 84px; font-size: 128px; line-height: 1.2; }
+  .v .l2 { position: absolute; top: 520px; left: 84px; font-size: 112px; color: var(--red); white-space: nowrap; }
+  .v .grid { position: absolute; top: 760px; left: 84px; right: 84px; gap: 20px; }
+  .v .face { height: 300px; }
+  .v .face span { font-size: 36px; }
+  .v .foot { position: absolute; top: 1760px; left: 84px; right: 84px; display: flex; justify-content: space-between; align-items: center; }
+  .v .foot .t { font-size: 46px; }
+  .v .foot .u { font-size: 34px; color: #cfc7b8; }
+
+  /* 横版 1280×720（视频缩略图） */
+  body.h { width: 1280px; height: 720px; }
+  .h .left { position: absolute; top: 0; bottom: 0; left: 64px; width: 560px; display: flex; flex-direction: column; justify-content: center; }
+  .h .seal { width: 52px; height: 52px; font-size: 32px; border-radius: 12px; }
+  .h .brand .name { font-size: 30px; letter-spacing: 2px; }
+  .h .ceiling { width: 520px; margin: 44px 0 30px; height: 8px; }
+  .h .l1 { font-size: 84px; line-height: 1.2; }
+  .h .l2 { font-size: 72px; color: var(--red); white-space: nowrap; margin-top: 8px; }
+  .h .u { font-size: 26px; color: #cfc7b8; margin-top: 40px; }
+  .h .grid { position: absolute; top: 40px; bottom: 40px; right: 48px; width: 600px; gap: 12px; grid-template-rows: repeat(3, 1fr); }
+  .h .face span { font-size: 24px; padding: 28px 0 8px; }
+</style>
+</head>
+<body>
+  <div class="brand"><span class="seal serif">华</span><span class="name serif">世界华人名人录</span></div>
+  <div class="ceiling"></div>
+  <div class="left-text">
+    <div class="l1 serif">华人在海外</div>
+    <div class="l2 serif">真的有天花板吗？</div>
+  </div>
+  <div class="grid"></div>
+  <div class="foot"><span class="t serif">推荐你心中的华人领袖</span><span class="u">asian-leaders.jytech.us</span></div>
+
+<script>
+  const PEOPLE = [
+    ["0.jpg", "黄仁勋"], ["1.jpg", "苏姿丰"], ["2.jpg", "袁征"],
+    ["3.jpg", "杨紫琼"], ["4.jpg", "成龙"], ["5.jpg", "杨振宁"],
+    ["6.jpg", "李飞飞"], ["7.png", "谷爱凌"], ["8.jpg", "林书豪"],
+  ];
+  const layout = new URLSearchParams(location.search).get("layout") || "v";
+  document.body.className = layout;
+  document.querySelector(".grid").innerHTML = PEOPLE.map(([f, n]) =>
+    `<div class="face"><img src="assets/cover/${f}"><span>${n}</span></div>`).join("");
+  if (layout === "h") {
+    // 横版：品牌、标题、网址收进左栏
+    const left = document.createElement("div");
+    left.className = "left";
+    left.append(document.querySelector(".brand"), document.querySelector(".ceiling"),
+      ...document.querySelector(".left-text").children);
+    const u = document.createElement("div");
+    u.className = "u"; u.textContent = "asian-leaders.jytech.us";
+    left.append(u);
+    document.body.prepend(left);
+    document.querySelector(".foot").remove();
+  }
+</script>
+</body>
+</html>
