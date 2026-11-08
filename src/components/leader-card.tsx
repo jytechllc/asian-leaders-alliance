@@ -43,7 +43,7 @@ export function LeaderCard({ leader, wiki }: { leader: Leader; wiki?: WikiInfo }
           {leader.position && <p className="mt-0.5 text-sm text-muted">{leader.position}</p>}
           <div className="mt-1.5 flex flex-wrap gap-1.5 text-xs">
             <span className="rounded border border-line px-1.5 py-0.5 text-muted">{leader.region}</span>
-            {wiki?.deceased && <span className="rounded bg-ink/10 px-1.5 py-0.5 text-muted">已故</span>}
+            {(wiki?.deceased || leader.deceased) && <span className="rounded bg-ink/10 px-1.5 py-0.5 text-muted">已故</span>}
           </div>
         </div>
       </div>

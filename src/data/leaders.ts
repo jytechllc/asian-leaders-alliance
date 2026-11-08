@@ -2,7 +2,7 @@
 // wiki 为英文维基百科条目标题；中文条目通过语言链接自动获取。
 // image 用于没有维基照片的人物，文件放在 public/people/；logo 会完整显示而不裁切。
 
-export type Region = "美国" | "加拿大" | "日本" | "澳大利亚" | "马来西亚" | "中国";
+export type Region = "美国" | "加拿大" | "日本" | "澳大利亚" | "马来西亚" | "泰国" | "中国";
 
 export type Leader = {
   name: string;
@@ -12,9 +12,11 @@ export type Leader = {
   region: Region;
   wiki?: string;
   image?: { src: string; kind: "photo" | "logo" };
+  // 没有维基条目的已故人物手动标注
+  deceased?: boolean;
 };
 
-export const REGIONS: Region[] = ["美国", "加拿大", "日本", "澳大利亚", "马来西亚", "中国"];
+export const REGIONS: Region[] = ["美国", "加拿大", "日本", "澳大利亚", "马来西亚", "泰国", "中国"];
 
 export const leaders: Leader[] = [
   { region: "美国", name: "Big Joe", position: "谷歌资深产品经理", note: "帮助华人职场发展与个人发展" },
@@ -79,10 +81,24 @@ export const leaders: Leader[] = [
   },
   {
     region: "美国",
-    name: "Athena Liu",
+    name: "Athena Liu Goodman",
     position: "美中友好联盟（SAPA）执行主席",
+    note: "常曼·帕恰努泰博士义女",
     link: { label: "X @AthenaLiuGoodm1", href: "https://x.com/AthenaLiuGoodm1" },
     image: { src: "/people/athena-liu-sapa.jpg", kind: "logo" },
+  },
+  {
+    region: "泰国",
+    name: "常曼·帕恰努泰 Dr. Mun Patanotai",
+    position: "美中友好联盟（SAPA）终身荣誉主席",
+    note: "泰国帕恰努泰家族成员。早年赴美留学、工作十余年，曾任美国国务院顾问，协助接待泰国政府代表团（据家属撰写的缅怀文章）",
+    deceased: true,
+  },
+  {
+    region: "泰国",
+    name: "善·帕恰努泰",
+    position: "美中友好联盟（SAPA）副主席",
+    note: "常曼·帕恰努泰博士之子，往来中、美、泰三国推动民间交流",
   },
   {
     region: "美国",
